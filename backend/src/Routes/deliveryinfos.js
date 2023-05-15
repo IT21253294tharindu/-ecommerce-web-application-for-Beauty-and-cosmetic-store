@@ -34,7 +34,7 @@ const newdeliveryinfo=new deliveryinfo({
  })
 })
 Router.route("/").get((req,res)=>{
-    deliveryinfo.find().then((deliveryinfos)=>{
+    deliveryinfo.find().sort({createdAt:-1}).then((deliveryinfos)=>{
         res.json(deliveryinfos)
 
     })

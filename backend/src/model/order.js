@@ -21,12 +21,19 @@ const orderschema=new schema({
         
      }],
      deliveryinfo:{
-        type:String
+        type:String,
+        required:true
+       
+
     },
     customer_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        type:String
+        
     },
+    username:{
+        type:String
+    },
+
     orderstatus:{
         type:String,
         default:"pending"

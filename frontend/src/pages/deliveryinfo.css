@@ -2,13 +2,24 @@
     
     margin: 160px 400px;
     position:fixed;
-    background-color: #f8ad9d;
+    background-color: #555;
     width: 50%;
     height:500px;
     border-radius: 20px;
     display:grid;
     grid-template-columns: 3ft 1fr;
     gap: 100px;
+}
+.c1{
+  cursor:default;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+  box-shadow: 0px 0px 10px #746e6e;
+}
+.c1:hover{
+  transform: scale(1.25);
+  background-color: #5555;
+  box-shadow: 0px 0px 20px #695757;
 }
 
 #icon1{
@@ -24,9 +35,15 @@
     align-items: center;
     flex-flow:column;
     display: grid;
-    width: 50%;
-    margin-left:20%;
+    width: 40%;
+    margin-left:28%;
+    border-radius: 20%;
     
+}
+.iconplus{
+  margin-right: 75%;
+  margin-top: 80px;
+  text-decoration: none;
 }
 #label1{
     cursor: pointer;
@@ -35,8 +52,9 @@
     
 }
 .delivery-details{
-    background:#bbb6b6;
+    background:#5555;
     border-radius: 4px;
+    margin-top: 50px;
     margin:20px auto;
     padding: 20px;
     position: relative;
@@ -49,8 +67,10 @@
     color:#000000;
 
 }
-.delivery-details span{
+
+/*.delivery-details span{
     position: absolute;
+    font-family: :"Poppins";
     top: 20px;
     right: 20px;
     cursor: pointer;
@@ -59,4 +79,66 @@
     border-radius: 50%;
     color: #333;
 }
+*/
 
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+body {
+  background: #f1eeef;
+  /*background: #945671;*/
+ /* background: #426889;*/
+  margin: 0;
+  font-family: "Poppins";
+}
+
+/*.delivery-details span {
+  background: #0f9e9e;
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}*/
+/*.delivery-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}*/
+/*.delivery-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+*/
+
+/*.campaign-details span.edit*/
+.delivery-details span {
+  position: absolute; 
+  font-family:"Poppins";
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #5555;
+  padding: 3px;
+  border-radius: 60%;
+  color: #333;
+}
+
+/*.campaign-details span 
+div.edit {
+  position: absolute;
+  top: 20px;
+  right: 70px; 
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 3px;
+  border-radius: 50%;
+  color: #333;
+}
+*/

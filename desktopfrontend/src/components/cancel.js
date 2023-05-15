@@ -4,7 +4,8 @@ import {useNavigate,useParams} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import OrderContext from "./ordercontext";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -25,9 +26,18 @@ function HandleupdateStatus()
 
 
   axios.put(`http://localhost:4000/order/cancel/${id}`,{orderstatus:selectedStatus}).then(()=>{
-        alert("order cancelled successfully");
+    toast.success(' Order cancellation Successfully!', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
         setShowModal(false);
-        navigate('/order/');
+       
 
         
         setorder(order.map((o)=>{
@@ -38,6 +48,10 @@ function HandleupdateStatus()
           }
         })
       );
+      const timer = setTimeout(() => {
+        navigate("/order/");
+      }, 2000);
+      return () => clearTimeout(timer);
 
        }).catch((err)=>{
         console.log(err);
@@ -75,6 +89,6 @@ function HandleupdateStatus()
             </div>
     )}
 
-
+         <ToastContainer/>
 </>)
 }

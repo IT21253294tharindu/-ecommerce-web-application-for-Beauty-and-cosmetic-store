@@ -1,15 +1,16 @@
 const logger=require("../utils/logger");
 const Router=require("express").Router();
 let order=require("../model/order");
-const user = require("../model/user");
 const Stock =require("../model/stock");
 const { default: mongoose } = require("mongoose");
 const stock = require("../model/stock");
 const refundorder = require("../model/refundorder");
-const cancelorder=require("../model/cancelledorder")
+const cancelorder=require("../model/cancelledorder");
+const User = require("../model/user");
 
 
-Router.route("/add").post((req,res)=>{
+
+Router.route("/add").post(async(req,res)=>{
         const ObjectId=mongoose.Types.ObjectId;
         const orderid= new ObjectId();
         const cartId=req.body.cartId;
@@ -22,11 +23,17 @@ Router.route("/add").post((req,res)=>{
         }));
 
         const orderstatus=order.orderstatus;
-        const deliveryinfo=req.body.deliveryaddress;
+        const deliveryinfo=req.body.deliveryinfo;
         const paymentStatus=req.body.paymentStatus;
         const paymentMethod=req.body.paymentMethod;
         const totalprice=Number(req.body.totalprice);
-        const customer_id=req.body.userId;
+        const customer_id=req.body.customer_id;
+        const user=await User.findById(customer_id).select("name").exec();
+        
+        
+        
+        
+        
         
 
 
@@ -40,6 +47,7 @@ Router.route("/add").post((req,res)=>{
             totalprice,
             orderstatus,
             customer_id,
+            username:user.name,
             orderDate:new Date()
             
         
@@ -56,7 +64,7 @@ Router.route("/add").post((req,res)=>{
        
     Router.route("/").get((req,res)=>{
    
-        order.find({paymentStatus:"paid"} && {orderstatus:"pending"}).then((orders)=>{
+        order.find({paymentStatus:"paid"} && {orderstatus:"pending"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })
@@ -70,7 +78,7 @@ Router.route("/add").post((req,res)=>{
 
      Router.route("/ready").get((req,res)=>{
    
-        order.find({orderstatus:"ready to ship"}).then((orders)=>{
+        order.find({orderstatus:"ready to ship"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })
@@ -83,7 +91,7 @@ Router.route("/add").post((req,res)=>{
      })
      Router.route("/shipped").get((req,res)=>{
    
-        order.find({orderstatus:"shipped"}).then((orders)=>{
+        order.find({orderstatus:"shipped"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })
@@ -96,7 +104,7 @@ Router.route("/add").post((req,res)=>{
      })
      Router.route("/delivered").get((req,res)=>{
    
-        order.find({orderstatus:"delivered"}).then((orders)=>{
+        order.find({orderstatus:"delivered"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })
@@ -109,7 +117,7 @@ Router.route("/add").post((req,res)=>{
      })
      Router.route("/returned").get((req,res)=>{
    
-        order.find({orderstatus:"returned"}).then((orders)=>{
+        order.find({orderstatus:"returned"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })
@@ -122,7 +130,7 @@ Router.route("/add").post((req,res)=>{
      })
      Router.route("/cancelled").get((req,res)=>{
    
-        order.find({orderstatus:"cancelled"}).then((orders)=>{
+        order.find({orderstatus:"cancelled"}).sort({createdAt:-1}).then((orders)=>{
          res.json(orders)
 
          })

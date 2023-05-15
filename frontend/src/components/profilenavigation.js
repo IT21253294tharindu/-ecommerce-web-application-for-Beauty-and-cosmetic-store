@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 function ProfileNavigation() {
   return (
-    <ButtonGroup aria-label="Basic example" style={{position:"relative",alignContent:"center"}}>
-    <Link to=""><Button variant="secondary" >Personal informations</Button></Link>
-    <Link to="/deliveryinfo"><Button variant="secondary" >Delivery informations</Button></Link>
-    <Link to=""><Button variant="secondary" >Purchased history</Button></Link>
+    <ButtonGroup aria-label="Basic example" style={{position:"relative",alignContent:"center",marginTop:"10px",gap:"3px"}}>
+    <Link to=""><Button variant="dark" >Personal informations</Button></Link>
+    <Link to="/deliveryinfo"><Button variant="primary" defaultChecked>Delivery informations</Button></Link>
+    <Link to=""><Button variant="dark" >Purchased history</Button></Link>
     </ButtonGroup>
   );
 }

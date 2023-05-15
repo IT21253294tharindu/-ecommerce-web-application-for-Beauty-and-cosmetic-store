@@ -4,21 +4,17 @@ import React from 'react';
 //import CounterFunction from './components/counterfunction';
 import AddDeliveryinfo from './components/adddeliveryinfo';
 import {BrowserRouter as Router,Route, Routes } from "react-router-dom";
-import DeliveryInfo from "./pages/deliveryinfo"
-import Header from './components/navigation';
-import ProfileNavigation from './components/profilenavigation';
+import DeliveryInfo from "./pages/deliveryinfo";
 import UpdateDeliveryinfo from './components/updateDeliveryinfo';
 
 
 
 
-function App() {
+function App({}) {
   return (
     <div className="App"> 
+    
     <Router>
-      <Header/>
-      <ProfileNavigation/>
-
      <Routes>
      <Route path='/deliveryinfo' exact Component={DeliveryInfo}/>
      <Route path="/addDeliveryinfo" exact Component={AddDeliveryinfo}/>
@@ -29,6 +25,7 @@ function App() {
    
     
     </div>
+
   );
 }
 
